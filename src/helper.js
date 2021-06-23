@@ -8,6 +8,7 @@ class Draw {
     }   
 
     drawImage(ctx, img, source_rect, dest_rect) {
+        console.log(ctx, img, source_rect, dest_rect)
         ctx.drawImage(img, source_rect[0], source_rect[1], source_rect[2], source_rect[3],
             dest_rect[0], dest_rect[1], dest_rect[2], dest_rect[3]);
     }
