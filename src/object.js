@@ -1,23 +1,33 @@
 const ImageWrapper = require('./image_wrapper')
 
-class MovingObject {
+class Object {
     constructor(options){
         this.pos = options.pos;
         this.data = options.data;
         this.color = options.color;
-        this.image = this.draw(options.name);
+        // this.image = this.draw(options.name);
         this.game = options.game;
         this.map = options.map;
         const DIRS = [[1, 0], [0, 1], [-1, 0], [0, -1]]
     }
 
+    draw(ctx) {
+        console.log(ctx)
+        ctx.beginPath();
+        let x = this.pos[0] * 50 + 24
+        let y = this.pos[1] * 50 + 24
+        ctx.arc(x, y, 20, 0, 2 * Math.PI);
+        ctx.strokeStyle = this.color;
+        ctx.stroke();
+        ctx.fillStyle = this.color;
+        ctx.fill();
+    };  
 
-
-    draw(name) {
-        let rect = [0, 0, 14, 14];
-        let img = `images/${name}.png`
-        this.image = new ImageWrapper(img, rect)
-    }
+    // draw(name) {
+    //     let rect = [0, 0, 14, 14];
+    //     let img = `images/${name}.png`
+    //     this.image = new ImageWrapper(img, rect)
+    // }
 
     move(pos) {
         this.pos[0] += pos[0];
@@ -59,4 +69,4 @@ class MovingObject {
     }
 }
 
-module.exports = MovingObject;
+module.exports = Object;

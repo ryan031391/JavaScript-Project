@@ -1,5 +1,6 @@
 const Draw = require('./helper')
 const ImageWrapper = require('./image_wrapper')
+const Object = require('./object')
 
 class MapData {
     constructor(width, height, grid) {
@@ -73,21 +74,22 @@ class MapData {
         const BG_SELECT = 3;
         const BG_ATTACK = 4;
 
-        function getMapGridImage() {
-            let grid_rect = new Map([
-                [MAP_STONE.toString(), [0, 21, 20, 20]],
-                [MAP_GRASS.toString(), [0, 0, 20, 20]]
-            ]);
-            let grid_image_map = new Map();
+        // function getMapGridImage() {
+        //     let grid_rect = new Map([
+        //         [MAP_STONE.toString(), [0, 21, 20, 20]],
+        //         [MAP_GRASS.toString(), [0, 0, 20, 20]]
+        //     ]);
+        //     let grid_image_map = new Map();
 
-            for (let key of grid_rect.keys()) {              
-                let img = new ImageWrapper('tile', grid_rect.get(key));
-                grid_image_map.set(key, img);
-            }
-            return grid_image_map;
-        }
+        //     for (let key of grid_rect.keys()) {              
+        //         let img = new ImageWrapper('tile', grid_rect.get(key));
+        //         grid_image_map.set(key, img);
+        //     }
+        //     return grid_image_map;
+        // }
 
-        let grid_image_map = getMapGridImage();
+        // let grid_image_map = getMapGridImage();
+
 
         for (let y in this.bg_map) {
             let row = this.bg_map[y];
@@ -110,15 +112,14 @@ class MapData {
             }
         }
 
-        console.log(grid_image_map)
-
         this.grid_map.forEach((row, y) => {
             row.forEach((grid, x) => {
                 if (grid === 1) {
-                    let dest_rect = [x * rec_size, y * rec_size, 48, 48]
-                    let grid_img = grid_image_map.get("1")
-                    console.log(grid_img)
-                    grid_img.draw(ctx, dest_rect)
+                    let grid_img = new Object({pos: [x,y], color: 'grey'})
+                    grid_img.draw(ctx)
+                } else if (grid === 2) {
+                    let grid_img = new Object({pos: [x,y], color: 'green'})
+                    grid_img.draw(ctx)
                 }
             })
         })
