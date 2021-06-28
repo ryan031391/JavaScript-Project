@@ -103,8 +103,8 @@ class Entity{
         this.attack_timer = 0;
         this.current_time = 0;
         this.move_speed = 2;
-        this.walk_path = undefined;
         
+        this.walk_path = undefined;
         this.remote_attack = false;
         this.weapon = undefined;
     }

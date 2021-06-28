@@ -1,4 +1,3 @@
-
 function getMousePos(canvas, evt) {
     const rect = canvas.getBoundingClientRect();
     return {
