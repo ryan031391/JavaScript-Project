@@ -1,7 +1,8 @@
 class Game{
     constructor() {
-        this.current_time = 2000;
+        this.current_time = 0;
         this.done = false;
+        this.status = undefined;
     }
     
     startup(current_time, level_data) {
@@ -28,7 +29,7 @@ class Game{
     }
     
     update(ctx, current_time, mouse_pos, mouse_down) {
-        this.current_time = current_time;
+        this.current_time = Date.now();
         
         if(this.state == IDLE) {
             let result = this.getActiveEntity();
@@ -128,10 +129,10 @@ class Game{
         if(this.group1.isEmpty() || this.group2.isEmpty()) {
             this.done = true;
             if(this.group1.isEmpty()) {
-                this.next = LEVEL_WIN;
+                this.status = "Win";
             }
             else {
-                this.next = LEVEL_LOSE;
+                this.status = "Lose";
             }
         }
     }

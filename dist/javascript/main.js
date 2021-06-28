@@ -23,7 +23,7 @@ canvas.height = MAP_HEIGHT;
 document.body.appendChild(canvas);
 
 const w = window;
-requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
+requestAnimationFrame = w.requestAnimationFrame 
 
 let mousePos;
 let mouseDown = false;
