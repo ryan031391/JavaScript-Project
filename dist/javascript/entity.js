@@ -1,3 +1,87 @@
+
+class FireBall{
+    constructor(x, y, enemy, hurt) {
+        this.loadImage();
+        this.pos = {'x':x, 'y':y};
+        this.enemy = enemy;
+        this.hurt = hurt;
+        this.done = false;
+        this.calVelocity();
+    }
+    
+    loadImage() {
+        let rect = [0, 0, 14, 14];
+        this.img = new ImageWrapper(FIREBALL, rect);
+    }
+    
+    getRect() {
+        return [this.pos.x - 7, this.pos.y - 7, 14, 14];
+    }
+    
+    calVelocity() {
+        let dis_x = this.enemy.pos.x - this.pos.x;
+        let dis_y = this.enemy.pos.y - this.pos.y;
+        this.x_vel = dis_x / 50;
+        this.y_vel = dis_y / 50;
+    }
+    
+    update(level) {
+        this.pos.x += this.x_vel;
+        this.pos.y += this.y_vel;
+        let distance = Math.abs(this.pos.x - this.enemy.pos.x) + Math.abs(this.pos.y - this.enemy.pos.y);
+        let [, , enemy_width, _] = this.enemy.getRect();
+        if(distance < enemy_width / 2) {
+            this.enemy.setHurt(this.hurt, level);
+            this.done = true;
+        }
+    }
+    
+    draw(ctx) {
+        this.img.draw(ctx, this.getRect());
+    }
+}
+
+class EntityAttr{
+    constructor(data) {
+        this.max_health = data[ATTR_HEALTH];
+        this.distance = data[ATTR_DISTANCE];
+        this.damage = data[ATTR_DAMAGE];
+        this.attack = data[ATTR_ATTACK];
+        this.defense = data[ATTR_DEFENSE];
+        this.speed = data[ATTR_SPEED];
+        if(data[ATTR_REMOTE] == 0) {
+            this.remote = false;
+        }
+        else {
+            this.remote = true;
+        }
+    }
+    
+    getHurt(enemy_attr, damage_half=false) {
+        let offset = 0;
+        if(this.attack > enemy_attr.defense) {
+            offset = (this.attack - enemy_attr.defense) * 0.05;
+        }
+        else if(this.attack < enemy_attr.defense) {
+            offset = (this.attack - enemy_attr.defense) * 0.025;
+        }
+        
+        let damage = this.damage;
+        if(damage_half) {
+            damage = damage / 2;
+        }
+        let hurt = parseInt(damage * (1 + offset));
+        
+        if(hurt > this.damage * 4) {
+            hurt = this.damage * 4;
+        }
+        else if(hurt < this.damage / 4) {
+            hurt = parseInt(this.damage / 4);
+        }
+        return hurt;
+    }
+}
+
 class Entity{
     constructor(group, name, map_x, map_y, data) {
         this.group = group;
@@ -304,5 +388,31 @@ class EntityGroup{
         this.group.forEach(function(entity) {
             entity.draw(ctx);
         });
+    }
+}
+
+class HurtShow{
+    constructor(x, y, hurt) {
+        this.y = y - 20;
+        this.font = 'bold 20px Arial';
+        this.str = hurt.toString();
+        this.pos = {'x':x-10, 'y':this.y};
+        this.y_vel = -1;
+        this.distance = 40;
+    }
+    
+    shouldRemove() {
+        if((this.y - this.pos.y) > this.distance) {
+            return true;
+        }
+        return false;
+    }
+    
+    update() {
+        this.pos.y += this.y_vel;
+    }
+    
+    draw(ctx) {
+        drawText(ctx, 'red', this.str, this.font, this.pos.x, this.pos.y);
     }
 }
