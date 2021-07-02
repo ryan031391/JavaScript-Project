@@ -107,6 +107,7 @@ class Entity{
         this.walk_path = undefined;
         this.remote_attack = false;
         this.weapon = undefined;
+        // console.log(this)
     }
     
     loadImages(name) {
