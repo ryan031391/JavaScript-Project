@@ -5,7 +5,6 @@ class ImageWrapper{
     }
     
     draw(ctx, dest_rect) {
-        // console.log(this.img)
         if(this.img.ready) {
             drawImage(ctx, this.img.img, this.rect, dest_rect);
         }

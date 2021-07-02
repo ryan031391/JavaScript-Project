@@ -87,8 +87,6 @@ class Game{
                 }
             }
         }
-
-        // console.log(remove_list)
         
         this.checkGameState();
         this.draw(ctx);
