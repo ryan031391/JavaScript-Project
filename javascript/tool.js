@@ -1,3 +1,60 @@
+class State{
+    constructor() {
+        this.current_time = 0;
+        this.done = false;
+        this.next = undefined;
+    }
+    
+    startup(current_time, game_info) {
+    }
+    
+    cleanup() {
+        this.done = false;
+        return this.game_info;
+    }
+    
+    update(ctx, mousePos, mouseDown){
+        
+    }
+}
+
+class Control{
+    constructor() {
+        this.current_time = 0;
+        this.done = false;
+        this.state = undefined;
+        this.game_info = {'level_num':START_LEVEL_NUM};
+    }
+    
+    setupStates(state_dict, start_state) {
+        this.state_dict = state_dict;
+        console.log(state_dict);
+        this.state_name = start_state;
+        this.state = this.state_dict.get(this.state_name);
+        this.state.startup(this.current_time, this.game_info);
+    }
+    
+    flipState() {
+        let game_info = this.state.cleanup();
+        this.state_name = this.state.next;
+        if(this.state_name == EXIT) {
+            this.done = true;
+        }
+        else {
+            this.state = this.state_dict.get(this.state_name);
+            this.state.startup(this.current_time, game_info);
+        }
+    }
+    
+    update(ctx, mousePos, mouseDown) {
+        this.current_time = Date.now();
+        this.state.update(ctx, this.current_time, mousePos, mouseDown);
+        if(this.state.done) {
+            this.flipState();
+        }
+    }
+}
+
 class ImageWrapper{
     constructor(name, rect) {
         this.img = IMAGE_MAP.get(name);
@@ -10,6 +67,7 @@ class ImageWrapper{
         }
     }
 }
+
 
 function drawLine(ctx, color, start_x, start_y, end_x, end_y) {
     ctx.strokeStyle = color;
@@ -74,8 +132,12 @@ function getMapGridImage() {
     return grid_image_map;
 }
 
+function getLevelData(level_num) {
+    let level = 'level_' + level_num;
+    return LEVEL_MAP.get(level);
+}
 
-const IMAGE_MAP = new Map();
+var IMAGE_MAP = new Map();
 loadAllGraphics(IMAGE_SRC_MAP);
 
-const GRID_IMAGE_MAP = getMapGridImage();
+var GRID_IMAGE_MAP = getMapGridImage();
