@@ -20,6 +20,20 @@ const BG_RANGE = 2;
 const BG_SELECT = 3;
 const BG_ATTACK = 4;
 
+const MAIN_MENU = 'main menu';
+const LEVEL_START = 'level start';
+const LEVEL_LOSE = 'level lose';
+const LEVEL_WIN = 'level win';
+const LEVEL = 'level';
+const EXIT = 'exit';
+
+const LEVEL_NUM = 'level_num';
+const START_LEVEL_NUM = 1;
+const MAX_LEVEL_NUM = 2;
+
+const LEVEL_LOSE_INFO = 'You Lose';
+const LEVEL_WIN_INFO = 'You Win';
+
 const MAP_GRID = 'mapgrid';
 const GROUP1 = 'group1';
 const GROUP2 = 'group2';
@@ -42,6 +56,7 @@ const IMAGE_SRC_MAP = new Map([
 
 const IDLE = 'idle';
 const SELECT = 'select';
+const ENTITY_ACT = 'entity act';
 const WALK = 'walk';
 const ATTACK = 'attack';
 

@@ -9,3 +9,17 @@ const level_1 = {
               {name:'footman', map_x:6, map_y:10}]
 };
 
+const level_2 = {
+    'mapgrid':[{x:2, y:5, type:1}, {x:6, y:5, type:1}, 
+               {x:4, y:4, type:1}, {x:4, y:6, type:1}],
+    'group1':[{name:'devil', map_x:1, map_y:1},
+              {name:'evilwizard', map_x:4, map_y:1},
+              {name:'devil', map_x:7, map_y:1}],
+    'group2':[{name:'footman', map_x:2, map_y:10},
+              {name:'magician', map_x:4, map_y:10},
+              {name:'footman', map_x:6, map_y:10}]
+};
+
+const LEVEL_MAP = new Map();
+LEVEL_MAP.set('level_1', level_1);
+LEVEL_MAP.set('level_2', level_2);

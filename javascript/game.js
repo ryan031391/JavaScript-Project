@@ -1,13 +1,15 @@
-class Game{
+class Game extends State{
     constructor() {
-        this.current_time = 0;
-        this.done = false;
-        this.status = undefined;
+        // this.current_time = 0;
+        // this.done = false;
+        // this.status = undefined;
+        super();
     }
     
-    startup(current_time, level_data) {
+    startup(current_time, game_info) {
         this.start_time = current_time;
-        this.level_data = level_data
+        this.game_info = game_info;
+        this.level_data = this.level_data = getLevelData(this.game_info[LEVEL_NUM]);
         this.loadMap();
         this.setupGroup();
         this.state = IDLE;

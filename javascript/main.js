@@ -7,7 +7,7 @@ function getMousePos(canvas, evt) {
 }
 
 function main() {
-    game.startup(0, level_1)
+    // game.startup(0, level_1)
     if(!game.done) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         game.update(ctx, mousePos, mouseDown);
@@ -23,7 +23,7 @@ canvas.height = MAP_HEIGHT;
 document.body.appendChild(canvas);
 
 const w = window;
-requestAnimationFrame = w.requestAnimationFrame 
+requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
 
 let mousePos;
 let mouseDown = false;
@@ -37,6 +37,14 @@ canvas.addEventListener('mousedown', function(evt) {
     mousePos = getMousePos(canvas, evt);
 });
 
-const game = new Game();
+const game = new Control();
+
+const state_dict = new Map();
+state_dict.set(MAIN_MENU, new MainMenu());
+state_dict.set(LEVEL_START, new LevelStartScreen());
+state_dict.set(LEVEL_LOSE, new LevelLoseScreen(LEVEL_LOSE_INFO));
+state_dict.set(LEVEL_WIN, new LevelWinScreen(LEVEL_WIN_INFO));
+state_dict.set(LEVEL, new Game());
+game.setupStates(state_dict, MAIN_MENU);
 
 main();
