@@ -7,7 +7,6 @@ function getMousePos(canvas, evt) {
 }
 
 function main() {
-    // game.startup(0, level_1)
     if(!game.done) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         game.update(ctx, mousePos, mouseDown);

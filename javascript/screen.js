@@ -33,7 +33,7 @@ class MainMenu extends State{
     
     startup(current_time, game_info) {
         this.game_info = game_info;
-        this.name = 'My Strategy Game';
+        this.name = 'KingSlayer';
         this.font = 'bold 40px Arial';
         this.setupButtons();
     }
