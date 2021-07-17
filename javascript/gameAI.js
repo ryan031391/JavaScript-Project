@@ -77,8 +77,6 @@ function getAIAction(entity, MAP, enemy_group) {
             }
         }
     }
-
-    // console.log(best_info.round_num)
     
     if(best_info.round_num == 0) {
         if(best_info.point == undefined) {

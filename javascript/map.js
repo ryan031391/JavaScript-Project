@@ -119,7 +119,6 @@ class MapData {
     
     checkMouseMove(mouse_pos) {
         let [map_x, map_y] = this.getMapIndex(mouse_pos.x, mouse_pos.y);
-        // console.log([map_x, map_y])
         
         if(!this.isValid(map_x, map_y) || 
            this.grid_map[map_y][map_x] == MAP_STONE) {
