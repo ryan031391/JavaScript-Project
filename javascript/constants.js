@@ -1,6 +1,6 @@
 const GRID_X_LEN = 10;
 const GRID_Y_LEN = 12;
-const REC_SIZE = 50;
+const REC_SIZE = 70;
 const MAP_WIDTH = GRID_X_LEN * REC_SIZE;
 const MAP_HEIGHT = GRID_Y_LEN * REC_SIZE;
 

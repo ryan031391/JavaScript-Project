@@ -221,12 +221,12 @@ class MapData {
             let row = this.grid_map[y];
             for(let x in row) {
                 if(row[x] == MAP_STONE) {
-                    let dest_rect = [x * REC_SIZE, y * REC_SIZE, 48, 48];
+                    let dest_rect = [x * REC_SIZE, y * REC_SIZE, 70, 70];
                     let grid_image = GRID_IMAGE_MAP.get(MAP_STONE.toString());
                     grid_image.draw(ctx, dest_rect);
                 }
                 else if(row[x] == MAP_GRASS) {
-                    let dest_rect = [x * REC_SIZE, y * REC_SIZE, 48, 48];
+                    let dest_rect = [x * REC_SIZE, y * REC_SIZE, 70, 70];
                     let grid_image = GRID_IMAGE_MAP.get(MAP_GRASS.toString());
                     grid_image.draw(ctx, dest_rect);
                 }

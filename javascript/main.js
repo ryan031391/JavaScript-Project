@@ -24,6 +24,13 @@ document.body.appendChild(canvas);
 const w = window;
 requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
 
+w.onload = w.onresize = function() {
+    var canvas = document.getElementById('canvas');
+    console.log(canvas)
+    canvas.width = window.innerWidth * 0.8;
+    canvas.height = window.innerHeight * 0.8;
+}
+
 let mousePos;
 let mouseDown = false;
 

@@ -40,7 +40,7 @@ class MainMenu extends State{
     
     setupButtons() {
         this.buttons = [];
-        this.buttons.push(new Button('#9ED99D', 150, 250, 200, 50, START_BUTTON_NAME, '#1AAD19'));
+        this.buttons.push(new Button('#9ED99D', 240, 350, 200, 50, START_BUTTON_NAME, '#1AAD19'));
     }
     
     update(ctx, current_time, mouse_pos, mouse_down) {
@@ -57,7 +57,7 @@ class MainMenu extends State{
             }
         }
         drawRect(ctx, LIGHTYELLOW, 0, 0, MAP_WIDTH, MAP_HEIGHT);
-        drawText(ctx, SKYBLUE, this.name, this.font, 90, 100);
+        drawText(ctx, SKYBLUE, this.name, this.font, 240, 250);
         for(let i in this.buttons) {
             this.buttons[i].draw(ctx);
         }
