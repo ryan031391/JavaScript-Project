@@ -67,3 +67,18 @@ const ATTR_ATTACK = 'attack';
 const ATTR_DEFENSE = 'defense';
 const ATTR_SPEED = 'speed';
 const ATTR_REMOTE = 'remote';
+
+
+// const IDLE = 'idle';
+// const SELECT = 'select';
+// const ENTITY_ACT = 'entity act';
+// const WALK = 'walk';
+// const ATTACK = 'attack';
+
+// const ATTR_HEALTH = 'health';
+// const ATTR_DISTANCE = 'distance';
+// const ATTR_DAMAGE = 'damage';
+// const ATTR_ATTACK = 'attack';
+// const ATTR_DEFENSE = 'defense';
+// const ATTR_SPEED = 'speed';
+// const ATTR_REMOTE = 'remote';
