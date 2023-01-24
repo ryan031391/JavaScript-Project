@@ -56,20 +56,3 @@ game.setupStates(state_dict, MAIN_MENU);
 main();
 
 
-
-// canvas.addEventListener('mousedown', function(evt) {
-//     mouseDown = true;
-//     mousePos = getMousePos(canvas, evt);
-// });
-
-// const game = new Control();
-
-// const state_dict = new Map();
-// state_dict.set(MAIN_MENU, new MainMenu());
-// state_dict.set(LEVEL_START, new LevelStartScreen());
-// state_dict.set(LEVEL_LOSE, new LevelLoseScreen(LEVEL_LOSE_INFO));
-// state_dict.set(LEVEL_WIN, new LevelWinScreen(LEVEL_WIN_INFO));
-// state_dict.set(LEVEL, new Game());
-// game.setupStates(state_dict, MAIN_MENU);
-
-// main();

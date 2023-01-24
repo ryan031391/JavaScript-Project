@@ -2,7 +2,7 @@ const ENTITY_ATTR = {
     'devil':{
         'health':100,
         'distance':6,
-        'damage':20, 
+        'damage':25, 
         'attack':5, 
         'defense':5, 
         'speed':6,
@@ -29,7 +29,7 @@ const ENTITY_ATTR = {
     'evilwizard':{
         'health':100,
         'distance':5,
-        'damage':20,
+        'damage':25,
         'attack':10,
         'defense':2,
         'remote':1,
