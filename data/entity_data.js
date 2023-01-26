@@ -9,19 +9,19 @@ const ENTITY_ATTR = {
         'remote':0
     },
     'footman':{
-        'health':100,
+        'health':150,
         'distance':5,
-        'damage':40,
+        'damage':50,
         'attack':5,
         'defense':5,
         'speed':5,
         'remote':0
     },
     'magician':{
-        'health':70,
+        'health':100,
         'distance':5,
         'damage':60,
-        'attack':10,
+        'attack':20,
         'defense':2,
         'speed':4,
         'remote':1

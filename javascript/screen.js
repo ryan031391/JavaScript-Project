@@ -137,22 +137,3 @@ class LevelWinScreen extends Screen{
     }
 }
 
-
-
-// class LevelWinScreen extends Screen{
-//     constructor(str) {
-//         super(str);
-//     }
-
-//     startup(current_time, game_info){
-//         super.startup(current_time, game_info);
-//         this.game_info[LEVEL_NUM] += 1;
-//         if(this.game_info[LEVEL_NUM] <= MAX_LEVEL_NUM) {
-//             this.next = LEVEL_START;
-//         }
-//         else {
-//             this.game_info[LEVEL_NUM] = START_LEVEL_NUM;
-//             this.next = MAIN_MENU;
-//         }
-//     }
-// }
